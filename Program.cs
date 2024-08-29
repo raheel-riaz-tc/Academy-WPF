@@ -35,7 +35,7 @@ switch (Option)
         {
             Console.WriteLine("Delete student Data");
             Console.Write("Student Id :");
-            var student_ID = Convert.ToByte(Console.ReadLine());
+            var student_ID = Convert.ToInt16(Console.ReadLine());
             await studentService.RemoveStudentAsync(student_ID);
             break;
 
@@ -61,7 +61,6 @@ switch (Option)
         {
             Console.WriteLine("Get All Data");
             List<StudentDto> students = await studentService.GetAllStudentAsync();
-
 
             foreach (var s in students)
             {
