@@ -4,33 +4,29 @@ using Academy.Core.Services;
 using Academy.Repositories;
 using Academy.Services;
 using Microsoft.Extensions.DependencyInjection;
-
 var serviceCollection = new ServiceCollection();
 ConfigureService(serviceCollection);
 var serviceProvider = serviceCollection.BuildServiceProvider();
 var studentService = serviceProvider.GetService<IStudentService>();
-
-
 Console.WriteLine("WellCome To Academy Management System");
 Console.WriteLine("Press\n1 To Add Student \n2 To Remove Student \n3 To Update Student \n4 To Gell All Students");
 var Option = Convert.ToInt32(Console.ReadLine());
-
 switch (Option)
 {
-	case 1:
-		{
+    case 1:
+        {
             Console.WriteLine("Add Student Data");
             Console.Write("Student Name :");
             var studentName = Console.ReadLine();
             Console.Write("Father Name :");
             var fatherName = Console.ReadLine();
-            StudentDto studentDto =  new StudentDto();
+            StudentDto studentDto = new StudentDto();
             studentDto.Id = 1;
             studentDto.Name = studentName;
             studentDto.F_Name = fatherName;
             await studentService.AddStudentAsync(studentDto);
             break;
-		}
+        }
     case 2:
         {
             Console.WriteLine("Delete student Data");
@@ -70,7 +66,7 @@ switch (Option)
         }
 
     default:
-		break;
+        break;
 }
 
 void ConfigureService(ServiceCollection serviceCollection)
